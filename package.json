@@ -1,0 +1,22 @@
+{
+  "name": "html-mocks",
+  "version": "1.0.0",
+  "description": "A collection of web components html mocks",
+  "main": "html-mocks.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ChristianKohler@github.com/ChristianKohler/html-mocks.git"
+  },
+  "keywords": [
+    "web-components"
+  ],
+  "author": "Christian Kohler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristianKohler/html-mocks/issues"
+  },
+  "homepage": "https://github.com/ChristianKohler/html-mocks#readme"
+}

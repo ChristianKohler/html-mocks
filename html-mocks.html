@@ -1,0 +1,81 @@
+<template>
+  <div id="header">
+    <button id="close"></button>
+    <button id="minimize"></button>
+    <button id="maximize"></button>
+  </div>
+  <content></content>
+  
+  <style>
+    :host {
+      display: block;
+      background: #F5F5F5;
+      min-height: 100px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #header {
+      display: flex;
+      align-items: center;
+      background: #D3D3D3;
+      height: 30px;
+      padding: 2px 5px;
+    }
+    #header button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      margin: 0 3px;
+      padding: 0;
+      background: red;
+    }
+    #header button#close {
+      background: #DE7345;
+      margin-left: 8px;
+    }
+    #header button#minimize {
+      background: #E0AB17;
+    }
+    #header button#maximize {
+      background: #91C225;
+      margin-right: 8px;
+    }
+    #header input {
+      flex-grow: 1;
+      margin: 0 5px;
+      background-color: #F8F8F8;
+      border: 1px solid #EDEDED;
+    }
+  </style>
+</template>
+<script>
+  "use strict";
+  
+  var importDoc = document.currentScript.ownerDocument;
+  var templateElement = importDoc.querySelector("template");
+  
+  class WindowMockup extends HTMLElement {
+    createdCallback() {
+      var templateContent = document.importNode(templateElement.content, true);
+      this.createShadowRoot().appendChild(templateContent);
+    }
+  }
+  
+  document.registerElement('mockup-window', {
+    prototype: WindowMockup.prototype
+  }); 
+  
+  class BrowserMockup extends HTMLElement {
+    createdCallback() {
+      var templateContent = document.importNode(templateElement.content, true);
+      var header = templateContent.querySelector("#header");
+      header.appendChild(document.createElement('input'));
+      this.createShadowRoot().appendChild(templateContent);
+    }
+  }
+  
+  document.registerElement('mockup-browser', {
+    prototype: BrowserMockup.prototype
+  });  
+</script>
