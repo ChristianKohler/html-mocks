@@ -22,7 +22,6 @@ Include the `dist/prism-components.html` file in your project.
 
 ```html
 <mockup-browser></mockup-browser>
-</pre>
 ```
 
 ## Style Mockups
