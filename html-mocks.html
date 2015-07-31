@@ -50,32 +50,40 @@
   </style>
 </template>
 <script>
-  "use strict";
+  (function(){
+    "use strict";
   
-  var importDoc = document.currentScript.ownerDocument;
-  var templateElement = importDoc.querySelector("template");
-  
-  class WindowMockup extends HTMLElement {
-    createdCallback() {
-      var templateContent = document.importNode(templateElement.content, true);
-      this.createShadowRoot().appendChild(templateContent);
+    var importDoc = document.currentScript.ownerDocument;
+    var templateElement = importDoc.querySelector("template");
+    
+    /**
+     * Mockup Window
+     */
+    class WindowMockup extends HTMLElement {
+      createdCallback() {
+        var templateContent = document.importNode(templateElement.content, true);
+        this.createShadowRoot().appendChild(templateContent);
+      }
     }
-  }
-  
-  document.registerElement('mockup-window', {
-    prototype: WindowMockup.prototype
-  }); 
-  
-  class BrowserMockup extends HTMLElement {
-    createdCallback() {
-      var templateContent = document.importNode(templateElement.content, true);
-      var header = templateContent.querySelector("#header");
-      header.appendChild(document.createElement('input'));
-      this.createShadowRoot().appendChild(templateContent);
+    
+    document.registerElement('mockup-window', {
+      prototype: WindowMockup.prototype
+    }); 
+    
+    /**
+     * Mockup Browser
+     */
+    class BrowserMockup extends HTMLElement {
+      createdCallback() {
+        var templateContent = document.importNode(templateElement.content, true);
+        var header = templateContent.querySelector("#header");
+        header.appendChild(document.createElement('input'));
+        this.createShadowRoot().appendChild(templateContent);
+      }
     }
-  }
-  
-  document.registerElement('mockup-browser', {
-    prototype: BrowserMockup.prototype
-  });  
+    
+    document.registerElement('mockup-browser', {
+      prototype: BrowserMockup.prototype
+    });  
+  })();
 </script>
