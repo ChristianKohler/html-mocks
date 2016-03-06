@@ -77,7 +77,11 @@
       createdCallback() {
         var templateContent = document.importNode(templateElement.content, true);
         var header = templateContent.querySelector("#header");
-        header.appendChild(document.createElement('input'));
+        var inputEl = document.createElement('input');
+        if (this.attributes['addressBar']) {
+          inputEl.value = this.attributes['addressBar'].value;
+        }
+        header.appendChild(inputEl);
         this.createShadowRoot().appendChild(templateContent);
       }
     }
